@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CurrencyService } from "../currency.service";
+import {Component, OnInit} from '@angular/core';
+import {CurrencyService} from "../currency.service";
 
 interface Currency {
   code: string;
@@ -18,14 +18,13 @@ export class CurrencyConverterComponent implements OnInit {
   amountToConvert = 1;
   convertedAmount: number;
 
-  constructor(private currencyService: CurrencyService) {}
+  constructor(private currencyService: CurrencyService) {
+  }
 
   convert(): void {
     const fromCurrencyValue = this.currencies.find(curr => curr.code === this.fromCurrency)?.value;
     const toCurrencyValue = this.currencies.find(curr => curr.code === this.toCurrency)?.value;
-    this.convertedAmount = fromCurrencyValue && toCurrencyValue
-      ? (this.amountToConvert / fromCurrencyValue) * toCurrencyValue
-      : undefined;
+    this.convertedAmount = fromCurrencyValue && toCurrencyValue ? (this.amountToConvert / fromCurrencyValue) * toCurrencyValue : undefined;
   }
 
   swapCurrencies(): void {
@@ -34,14 +33,11 @@ export class CurrencyConverterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currencyService.getCurrencyExchangeRates().subscribe(
-      (data) => {
-        this.currencies = Object.values(data.data) as Currency[];
-        this.convert();
-      },
-      (error) => {
-        console.error('Error fetching currency data:', error);
-      }
-    );
+    this.currencyService.getCurrencyExchangeRates().subscribe((data) => {
+      this.currencies = Object.values(data.data) as Currency[];
+      this.convert();
+    }, (error) => {
+      console.error('Error fetching currency data:', error);
+    });
   }
 }
