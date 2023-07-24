@@ -1,0 +1,77 @@
+.main-currency-page
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.currency-block
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.swap-btn
+{
+  color: #fff;
+  font-weight: bold;
+  border-color: #08abf5;
+  background-color:#08abf5;
+  border-radius: 8px;
+  padding: 10px 30px;
+  margin: 40px 0;
+}
+
+select
+{
+  border: 1px solid  #08abf5 ;
+  padding: 5px 14px;
+  text-align: center;
+}
+option
+{
+  text-align: start;
+}
+
+input {
+  margin-right: 20px;
+  font-size:18px;
+  padding:0.625em  0.625em 0.625em 0.3125em;
+  display:block;
+  width:18.75em;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus {
+  outline:none;
+}
+
+/* LABEL ======================================= */
+label {
+  font-family:'Arial';
+  color:#999;
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:0.3125em;
+  top:0.625em;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label    {
+  top:-20px;
+  left: -2px;
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
